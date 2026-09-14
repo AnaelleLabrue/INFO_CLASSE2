@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Simulation de colonies - D3 Voronoï</title>
+
+
+<!-- =========================================================
+     CSS - DÉBUT
+========================================================= -->
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+
+    display: flex;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PANNEAU
+========================================================= */
+
+.panel {
+
+    width: 310px;
+
+    padding: 20px;
+
+    background: white;
+
+    box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+
+    z-index: 10;
+
+    overflow-y: auto;
+}
+
+
+h1 {
+
+    font-size: 21px;
+
+    margin: 0 0 22px 0;
+}
+
+
+.control {
+
+    margin-bottom: 22px;
+}
+
+
+.control label {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+input[type="range"] {
+
+    width: 100%;
+}
+
+
+.value {
+
+    color: #159447;
+}
+
+
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+#play {
+
+    background: #16a34a;
+
+    color: white;
+}
+
+
+#play:hover {
+
+    background: #12833b;
+}
+
+
+#reset {
+
+    background: #dedede;
+
+    color: #222;
+}
+
+
+.stats {
+
+    margin-top: 24px;
+
+    padding: 15px;
+
+    background: #f1f3f4;
+
+    border-radius: 10px;
+}
+
+
+.stats div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 8px 0;
+}
+
+
+.legend {
+
+    margin-top: 22px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ddd;
+}
+
+
+.legend div {
+
+    margin: 8px 0;
+
+    font-size: 14px;
+}
+
+
+.info {
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background: #fff6e5;
+
+    border-left: 4px solid #f59e0b;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+#canvas {
+
+    flex: 1;
+
+    display: block;
+
+    background: white;
+}
+
+</style>
+
+<!-- =========================================================
+     CSS - FIN
+========================================================= -->
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     INTERFACE - DÉBUT
+========================================================= -->
+
+<div class="panel">
+
+
+<h1>
+    🌱 Simulation de colonies
+</h1>
+
+
+<!-- =====================================================
+     SLIDER ROUGE
+===================================================== -->
+
+<div class="control">
+
+<label>
+
+    <span>
+        Population rouge
+    </span>
+
+    <span
+        class="value"
+        id="redValue">
+        150
+    </span>
+
+</label>
+
+
+<input
+    id="redSlider"
+    type="range"
+    min="10"
+    max="500"
+    value="150"
+>
+
+</div>
+
+
+<!-- =====================================================
+     SLIDER VERT
+===================================================== -->
+
+<div class="control">
+
+<label>
+
+    <span>
+        Colonies vertes
+    </span>
+
+    <span
+        class="value"
+        id="greenValue">
+        50
+    </span>
+
+</label>
+
+
+<input
+    id="greenSlider"
+    type="range"
+    min="5"
+    max="100"
+    value="50"
+>
+
+</div>
+
+
+<!-- =====================================================
+     BOUTONS
+===================================================== -->
+
+<button id="play">
+    ▶ Lancer la simulation
+</button>
+
+
+<button id="reset">
+    ↻ Réinitialiser
+</button>
+
+
+<!-- =====================================================
+     STATISTIQUES
+===================================================== -->
+
+<div class="stats">
+
+
+<div>
+
+    <span>
+        Époque
+    </span>
+
+    <strong id="epoch">
+        0
+    </strong>
+
+</div>
+
+
+<div>
+
+    <span>
+        🔴 Rouges
+    </span>
+
+    <strong id="redCount">
+        0
+    </strong>
+
+</div>
+
+
+<div>
+
+    <span>
+        🟢 Vertes
+    </span>
+
+    <strong id="greenCount">
+        0
+    </strong>
+
+</div>
+
+
+<div>
+
+    <span>
+        ⚫ Noires
+    </span>
+
+    <strong id="blackCount">
+        0
+    </strong>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     LÉGENDE
+===================================================== -->
+
+<div class="legend">
+
+<div>
+    🔴 Population d'origine
+</div>
+
+<div>
+    🟢 Colonie active
+</div>
+
+<div>
+    ⚫ Colonie neutralisée
+</div>
+
+<div>
+    ◇ Territoire Voronoï
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     PARAMÈTRES
+===================================================== -->
+
+<div class="info">
+
+<strong>Paramètres du modèle</strong>
+
+<br><br>
+
+<strong>Seuil d'entassement :</strong>
+<span id="densityInfo"></span>
+
+<br>
+
+<strong>Rayon d'entassement :</strong>
+<span id="radiusInfo"></span>
+
+<br><br>
+
+Une colonie verte devient noire lorsqu'elle
+possède trop de colonies vertes voisines.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================================
+     CANVAS
+========================================================= -->
+
+<canvas id="canvas"></canvas>
+
+
+<!-- =========================================================
+     INTERFACE - FIN
+========================================================= -->
+
+
+<!-- =========================================================
+     D3.JS / DELAUNAY - DÉBUT
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/d3-delaunay@6"></script>
+
+<!--
+    d3-delaunay fournit notamment :
+
+    d3.Delaunay.from(...)
+    delaunay.voronoi(...)
+
+    Le Voronoï est utilisé ici pour calculer
+    le territoire d'influence de chaque colonie.
+-->
+
+<!-- =========================================================
+     D3.JS / DELAUNAY - FIN
+========================================================= -->
+
+
+<!-- =========================================================
+     JAVASCRIPT - DÉBUT
+========================================================= -->
+
+<script>
+
+
+// ============================================================
+// PARAMÈTRES DE LA SIMULATION
+// ============================================================
+
+
+// Nombre total d'époques
+
+const NOMBRE_EPOQUES = 50;
+
+
+// Nombre de positions candidates
+// évaluées pour chaque colonie
+
+const NOMBRE_CANDIDATS = 500;
+
+
+// ============================================================
+// PARAMÈTRES D'ATTRACTION / RÉPULSION
+// ============================================================
+
+const POIDS_ATTRACTION = 0.7;
+
+const POIDS_REPULSION = 0.7;
+
+
+// ============================================================
+// PARAMÈTRES D'ENTASSEMENT
+// ============================================================
+//
+// TU PEUX MODIFIER CES DEUX VALEURS.
+//
+// Exemple :
+//
+// SEUIL_ENTASSEMENT = 3
+//
+// signifie qu'une colonie devient noire
+// lorsqu'elle possède au moins 3 voisines.
+//
+// ============================================================
+
+
+const SEUIL_ENTASSEMENT = 3;
+
+
+// Rayon dans lequel on compte les voisines
+
+const RAYON_ENTASSEMENT = 65;
+
+
+// ============================================================
+// PARAMÈTRES VISUELS DU VORONOÏ
+// ============================================================
+
+
+// Afficher ou non les territoires
+
+const AFFICHER_VORONOI = true;
+
+
+// Épaisseur des frontières
+
+const EPAISSEUR_VORONOI = 1;
+
+
+// Opacité des territoires
+
+const OPACITE_VORONOI = 0.18;
+
+
+// ============================================================
+// CANVAS
+// ============================================================
+
+const canvas =
+    document.getElementById("canvas");
+
+
+const ctx =
+    canvas.getContext("2d");
+
+
+let width = 0;
+
+let height = 0;
+
+
+// ============================================================
+// DONNÉES
+// ============================================================
+
+let rouges = [];
+
+let colonies = [];
+
+let epoque = 0;
+
+let simulationActive = false;
+
+
+// ============================================================
+// REDIMENSIONNEMENT DU CANVAS
+// ============================================================
+
+function resizeCanvas() {
+
+
+    width =
+        canvas.width =
+        canvas.clientWidth;
+
+
+    height =
+        canvas.height =
+        canvas.clientHeight;
+
+
+    draw();
+}
+
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+// ============================================================
+// DISTANCE
+// ============================================================
+
+function distance(a, b) {
+
+
+    const dx =
+        a.x - b.x;
+
+
+    const dy =
+        a.y - b.y;
+
+
+    return Math.sqrt(
+        dx * dx +
+        dy * dy
+    );
+}
+
+
+// ============================================================
+// CRÉATION DES POINTS ROUGES
+// ============================================================
+
+function creerPopulationRouge() {
+
+
+    rouges = [];
+
+
+    const nombre =
+        Number(
+            document.getElementById(
+                "redSlider"
+            ).value
+        );
+
+
+    for(
+        let i = 0;
+        i < nombre;
+        i++
+    ) {
+
+
+        rouges.push({
+
+            x:
+                Math.random() * width,
+
+            y:
+                Math.random() * height
+
+        });
+    }
+}
+
+
+// ============================================================
+// TROUVER LA MEILLEURE POSITION
+// ============================================================
+
+function trouverMeilleurePosition() {
+
+
+    let meilleurePosition = null;
+
+    let meilleurScore = -Infinity;
+
+
+    // ========================================================
+    // TEST DES POSITIONS CANDIDATES
+    // ========================================================
+
+    for(
+        let i = 0;
+        i < NOMBRE_CANDIDATS;
+        i++
+    ) {
+
+
+        const candidat = {
+
+            x:
+                Math.random() * width,
+
+            y:
+                Math.random() * height
+
+        };
+
+
+        // ====================================================
+        // ATTRACTION VERS LE ROUGE
+        // ====================================================
+
+        let distanceRougeMin =
+            Infinity;
+
+
+        for(
+            const rouge of rouges
+        ) {
+
+
+            const d =
+                distance(
+                    candidat,
+                    rouge
+                );
+
+
+            if(
+                d <
+                distanceRougeMin
+            ) {
+
+                distanceRougeMin =
+                    d;
+            }
+        }
+
+
+        const distanceMax =
+            Math.sqrt(
+                width * width +
+                height * height
+            );
+
+
+        /*
+        1 = très proche d'un rouge
+
+        0 = très loin d'un rouge
+        */
+
+        const attraction =
+            1 -
+            Math.min(
+                distanceRougeMin /
+                distanceMax,
+                1
+            );
+
+
+        // ====================================================
+        // RÉPULSION DES VERTS
+        // ====================================================
+
+        let distanceVertMin =
+            Infinity;
+
+
+        for(
+            const colonie of colonies
+        ) {
+
+
+            // Les colonies noires
+            // ne participent plus.
+
+            if(
+                colonie.etat !== "vert"
+            ) {
+
+                continue;
+            }
+
+
+            const d =
+                distance(
+                    candidat,
+                    colonie
+                );
+
+
+            if(
+                d <
+                distanceVertMin
+            ) {
+
+                distanceVertMin = d;
+            }
+        }
+
+
+        let repulsion;
+
+
+        if(
+            distanceVertMin === Infinity
+        ) {
+
+            repulsion = 1;
+
+        } else {
+
+            repulsion =
+                Math.min(
+                    distanceVertMin /
+                    200,
+                    1
+                );
+        }
+
+
+        // ====================================================
+        // SCORE FINAL
+        // ====================================================
+
+        const score =
+
+            attraction *
+            POIDS_ATTRACTION
+
+            +
+
+            repulsion *
+            POIDS_REPULSION;
+
+
+        // ====================================================
+        // MEILLEUR CANDIDAT
+        // ====================================================
+
+        if(
+            score >
+            meilleurScore
+        ) {
+
+
+            meilleurScore =
+                score;
+
+
+            meilleurePosition =
+                candidat;
+        }
+    }
+
+
+    return meilleurePosition;
+}
+
+
+// ============================================================
+// AJOUT D'UNE COLONIE
+// ============================================================
+
+function ajouterColonie() {
+
+
+    const position =
+        trouverMeilleurePosition();
+
+
+    if(!position) {
+
+        return;
+    }
+
+
+    colonies.push({
+
+        x:
+            position.x,
+
+        y:
+            position.y,
+
+        etat:
+            "vert",
+
+        epoqueNaissance:
+            epoque
+
+    });
+}
+
+
+// ============================================================
+// ENTASSEMENT
+// ============================================================
+
+function verifierEntassement() {
+
+
+    const aNeutraliser = [];
+
+
+    // ========================================================
+    // PARCOURIR LES COLONIES
+    // ========================================================
+
+    for(
+        const colonie of colonies
+    ) {
+
+
+        if(
+            colonie.etat !== "vert"
+        ) {
+
+            continue;
+        }
+
+
+        let nombreVoisines = 0;
+
+
+        // ====================================================
+        // CHERCHER LES VOISINES
+        // ====================================================
+
+        for(
+            const autre of colonies
+        ) {
+
+
+            if(
+                autre === colonie
+            ) {
+
+                continue;
+            }
+
+
+            if(
+                autre.etat !== "vert"
+            ) {
+
+                continue;
+            }
+
+
+            const d =
+                distance(
+                    colonie,
+                    autre
+                );
+
+
+            if(
+                d <=
+                RAYON_ENTASSEMENT
+            ) {
+
+                nombreVoisines++;
+            }
+        }
+
+
+        // ====================================================
+        // NEUTRALISATION
+        // ====================================================
+
+        if(
+            nombreVoisines >=
+            SEUIL_ENTASSEMENT
+        ) {
+
+
+            aNeutraliser.push(
+                colonie
+            );
+        }
+    }
+
+
+    // ========================================================
+    // PASSAGE VERT → NOIR
+    // ========================================================
+
+    for(
+        const colonie of aNeutraliser
+    ) {
+
+
+        colonie.etat =
+            "noir";
+    }
+}
+
+
+// ============================================================
+// CALCUL DU VORONOÏ
+// ============================================================
+//
+// D3 prend les coordonnées des colonies et crée
+// une cellule autour de chacune.
+//
+// Chaque cellule représente la zone du canvas
+// qui est plus proche de cette colonie que des autres.
+//
+// ============================================================
+
+function calculerVoronoi() {
+
+
+    if(
+        !AFFICHER_VORONOI
+    ) {
+
+        return null;
+    }
+
+
+    if(
+        colonies.length === 0
+    ) {
+
+        return null;
+    }
+
+
+    // ========================================================
+    // EXTRACTION DES COORDONNÉES
+    // ========================================================
+
+    const points =
+        colonies.map(
+            colonie => [
+                colonie.x,
+                colonie.y
+            ]
+        );
+
+
+    // ========================================================
+    // DELAUNAY
+    // ========================================================
+
+    const delaunay =
+        d3.Delaunay.from(
+            points
+        );
+
+
+    // ========================================================
+    // VORONOÏ
+    // ========================================================
+
+    const voronoi =
+        delaunay.voronoi([
+            0,
+            0,
+            width,
+            height
+        ]);
+
+
+    return voronoi;
+}
+
+
+// ============================================================
+// COULEUR DU TERRITOIRE
+// ============================================================
+
+function couleurTerritoire(colonie) {
+
+
+    if(
+        colonie.etat === "vert"
+    ) {
+
+        return `rgba(22, 163, 74, ${OPACITE_VORONOI})`;
+
+    }
+
+
+    return `rgba(0, 0, 0, ${OPACITE_VORONOI})`;
+}
+
+
+// ============================================================
+// DESSIN DU VORONOÏ
+// ============================================================
+
+function dessinerVoronoi() {
+
+
+    const voronoi =
+        calculerVoronoi();
+
+
+    if(!voronoi) {
+
+        return;
+    }
+
+
+    // ========================================================
+    // DESSIN DES CELLULES
+    // ========================================================
+
+    for(
+        let i = 0;
+        i < colonies.length;
+        i++
+    ) {
+
+
+        const cellule =
+            voronoi.cellPolygon(i);
+
+
+        if(!cellule) {
+
+            continue;
+        }
+
+
+        const colonie =
+            colonies[i];
+
+
+        // ----------------------------------------------------
+        // REMPLISSAGE
+        // ----------------------------------------------------
+
+        ctx.beginPath();
+
+
+        ctx.moveTo(
+            cellule[0][0],
+            cellule[0][1]
+        );
+
+
+        for(
+            let j = 1;
+            j < cellule.length;
+            j++
+        ) {
+
+
+            ctx.lineTo(
+                cellule[j][0],
+                cellule[j][1]
+            );
+        }
+
+
+        ctx.closePath();
+
+
+        ctx.fillStyle =
+            couleurTerritoire(
+                colonie
+            );
+
+
+        ctx.fill();
+
+
+        // ----------------------------------------------------
+        // FRONTIÈRE
+        // ----------------------------------------------------
+
+        ctx.strokeStyle =
+            colonie.etat === "vert"
+
+            ? "rgba(22,163,74,0.35)"
+
+            : "rgba(0,0,0,0.25)";
+
+
+        ctx.lineWidth =
+            EPAISSEUR_VORONOI;
+
+
+        ctx.stroke();
+    }
+}
+
+
+// ============================================================
+// DESSIN DES POINTS ROUGES
+// ============================================================
+
+function dessinerRouges() {
+
+
+    for(
+        const rouge of rouges
+    ) {
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            rouge.x,
+            rouge.y,
+            3,
+            0,
+            Math.PI * 2
+        );
+
+
+        ctx.fillStyle =
+            "#e53935";
+
+
+        ctx.fill();
+    }
+}
+
+
+// ============================================================
+// DESSIN DES COLONIES
+// ============================================================
+
+function dessinerColonies() {
+
+
+    for(
+        const colonie of colonies
+    ) {
+
+
+        // ----------------------------------------------------
+        // COULEUR
+        // ----------------------------------------------------
+
+        if(
+            colonie.etat === "vert"
+        ) {
+
+            ctx.fillStyle =
+                "#16a34a";
+
+        } else {
+
+            ctx.fillStyle =
+                "#111111";
+        }
+
+
+        // ----------------------------------------------------
+        // POINT
+        // ----------------------------------------------------
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            colonie.x,
+            colonie.y,
+            7,
+            0,
+            Math.PI * 2
+        );
+
+
+        ctx.fill();
+
+
+        // ----------------------------------------------------
+        // CONTOUR
+        // ----------------------------------------------------
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            colonie.x,
+            colonie.y,
+            7,
+            0,
+            Math.PI * 2
+        );
+
+
+        ctx.strokeStyle =
+            "rgba(0,0,0,0.25)";
+
+
+        ctx.lineWidth = 1;
+
+
+        ctx.stroke();
+    }
+}
+
+
+// ============================================================
+// DESSIN COMPLET
+// ============================================================
+
+function draw() {
+
+
+    // ========================================================
+    // EFFACER
+    // ========================================================
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    // ========================================================
+    // VORONOÏ
+    // ========================================================
+
+    dessinerVoronoi();
+
+
+    // ========================================================
+    // ROUGES
+    // ========================================================
+
+    dessinerRouges();
+
+
+    // ========================================================
+    // COLONIES
+    // ========================================================
+
+    dessinerColonies();
+}
+
+
+// ============================================================
+// STATISTIQUES
+// ============================================================
+
+function mettreAJourStatistiques() {
+
+
+    let vertes = 0;
+
+    let noires = 0;
+
+
+    for(
+        const colonie of colonies
+    ) {
+
+
+        if(
+            colonie.etat === "vert"
+        ) {
+
+            vertes++;
+        }
+
+
+        if(
+            colonie.etat === "noir"
+        ) {
+
+            noires++;
+        }
+    }
+
+
+    document.getElementById(
+        "epoch"
+    ).textContent =
+        epoque;
+
+
+    document.getElementById(
+        "redCount"
+    ).textContent =
+        rouges.length;
+
+
+    document.getElementById(
+        "greenCount"
+    ).textContent =
+        vertes;
+
+
+    document.getElementById(
+        "blackCount"
+    ).textContent =
+        noires;
+}
+
+
+// ============================================================
+// UNE ÉPOQUE
+// ============================================================
+
+function executerEpoque() {
+
+
+    if(
+        !simulationActive
+    ) {
+
+        return;
+    }
+
+
+    // ========================================================
+    // ÉPOQUE SUIVANTE
+    // ========================================================
+
+    epoque++;
+
+
+    const nombreColonies =
+        Number(
+            document.getElementById(
+                "greenSlider"
+            ).value
+        );
+
+
+    // ========================================================
+    // NOMBRE DE COLONIES À CETTE ÉPOQUE
+    // ========================================================
+
+    const objectif =
+        Math.ceil(
+            nombreColonies *
+            (
+                epoque /
+                NOMBRE_EPOQUES
+            )
+        );
+
+
+    // ========================================================
+    // AJOUT PROGRESSIF
+    // ========================================================
+
+    while(
+        colonies.length <
+        objectif
+    ) {
+
+        ajouterColonie();
+    }
+
+
+    // ========================================================
+    // VÉRIFICATION DE L'ENTASSEMENT
+    // ========================================================
+
+    verifierEntassement();
+
+
+    // ========================================================
+    // MISE À JOUR
+    // ========================================================
+
+    mettreAJourStatistiques();
+
+    draw();
+
+
+    // ========================================================
+    // CONTINUER
+    // ========================================================
+
+    if(
+        epoque <
+        NOMBRE_EPOQUES
+    ) {
+
+
+        setTimeout(
+            executerEpoque,
+            120
+        );
+
+
+    } else {
+
+
+        simulationActive =
+            false;
+    }
+}
+
+
+// ============================================================
+// PLAY
+// ============================================================
+
+document
+.getElementById("play")
+.addEventListener(
+    "click",
+    () => {
+
+
+        // Arrêter une éventuelle
+        // ancienne simulation
+
+        simulationActive =
+            false;
+
+
+        // Réinitialiser
+
+        epoque = 0;
+
+        colonies = [];
+
+
+        // Créer les rouges
+
+        creerPopulationRouge();
+
+
+        // Afficher
+
+        mettreAJourStatistiques();
+
+        draw();
+
+
+        // Lancer
+
+        simulationActive =
+            true;
+
+
+        executerEpoque();
+    }
+);
+
+
+// ============================================================
+// RESET
+// ============================================================
+
+document
+.getElementById("reset")
+.addEventListener(
+    "click",
+    () => {
+
+
+        simulationActive =
+            false;
+
+
+        epoque = 0;
+
+        colonies = [];
+
+        rouges = [];
+
+
+        mettreAJourStatistiques();
+
+        draw();
+    }
+);
+
+
+// ============================================================
+// SLIDER ROUGE
+// ============================================================
+
+document
+.getElementById("redSlider")
+.addEventListener(
+    "input",
+    function() {
+
+
+        document.getElementById(
+            "redValue"
+        ).textContent =
+            this.value;
+    }
+);
+
+
+// ============================================================
+// SLIDER VERT
+// ============================================================
+
+document
+.getElementById("greenSlider")
+.addEventListener(
+    "input",
+    function() {
+
+
+        document.getElementById(
+            "greenValue"
+        ).textContent =
+            this.value;
+    }
+);
+
+
+// ============================================================
+// AFFICHAGE DES PARAMÈTRES
+// ============================================================
+
+document.getElementById(
+    "densityInfo"
+).textContent =
+    SEUIL_ENTASSEMENT;
+
+
+document.getElementById(
+    "radiusInfo"
+).textContent =
+    RAYON_ENTASSEMENT + " px";
+
+
+// ============================================================
+// INITIALISATION
+// ============================================================
+
+resizeCanvas();
+
+mettreAJourStatistiques();
+
+
+// ============================================================
+// JAVASCRIPT - FIN
+// ============================================================
+
+</script>
+
+</body>
+
+</html>

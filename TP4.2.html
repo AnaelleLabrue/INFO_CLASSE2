@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carte mentale Mermaid</title>
+
+    <!-- Mermaid -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #1e293b;
+            color: white;
+            padding: 16px 24px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            min-height: 0;
+        }
+
+        /* GAUCHE */
+
+        .editor {
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #dbe1ea;
+            min-height: 0;
+        }
+
+        .title {
+            background: #e2e8f0;
+            padding: 12px 16px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        textarea {
+            flex: 1;
+            width: 100%;
+            resize: none;
+            border: none;
+            outline: none;
+
+            background: #0f172a;
+            color: #e2e8f0;
+
+            padding: 20px;
+
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* DROITE */
+
+        .preview {
+            min-width: 0;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        #diagram {
+            flex: 1;
+            overflow: auto;
+            padding: 40px;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #diagram svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .error {
+            width: 90%;
+            padding: 20px;
+
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+
+            color: #991b1b;
+            font-family: Consolas, monospace;
+
+            white-space: pre-wrap;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 50% 50%;
+            }
+
+            .editor {
+                border-right: none;
+                border-bottom: 2px solid #dbe1ea;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🧠 Éditeur de carte mentale Mermaid</h1>
+    <p>Le code reste dans ton navigateur.</p>
+</header>
+
+
+<div class="container">
+
+    <!-- ========================= -->
+    <!-- ÉDITEUR -->
+    <!-- ========================= -->
+
+    <section class="editor">
+
+        <div class="title">
+            Code Mermaid
+        </div>
+
+        <textarea id="code">flowchart LR
+
+    E(("Échec dans la recherche<br/>d'un stage étudiant"))
+
+    M["📋 MÉTHODE"]
+    O["🛠️ OUTILS"]
+    A["🎯 ATTITUDE"]
+
+    E --- M
+    E --- O
+    E --- A
+
+    M --> M1["CV non adapté"]
+    M --> M2["Relances oubliées"]
+    M --> M3["Pas de réseau"]
+
+    O --> O1["Candidatures envoyées<br/>en retard"]
+    O --> O2["Profils LinkedIn<br/>inactifs"]
+
+    A --> A1["Préparation insuffisante<br/>aux entretiens"]
+    A --> A2["Manque de ciblage"]
+
+    classDef centre fill:#ff6b6b,stroke:#c0392b,color:#fff,stroke-width:3px;
+    classDef methode fill:#74b9ff,stroke:#0984e3,color:#000,stroke-width:2px;
+    classDef outils fill:#55efc4,stroke:#00b894,color:#000,stroke-width:2px;
+    classDef attitude fill:#ffeaa7,stroke:#fdcb6e,color:#000,stroke-width:2px;
+
+    class E centre;
+    class M,M1,M2,M3 methode;
+    class O,O1,O2 outils;
+    class A,A1,A2 attitude;
+</textarea>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PRÉVISUALISATION -->
+    <!-- ========================= -->
+
+    <section class="preview">
+
+        <div class="title">
+            Prévisualisation
+        </div>
+
+        <div id="diagram"></div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+    /*
+     * Initialisation de Mermaid.
+     *
+     * Mermaid transforme le code en SVG
+     * directement dans le navigateur.
+     */
+
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "base"
+    });
+
+
+    const textarea = document.getElementById("code");
+    const diagram = document.getElementById("diagram");
+
+    let compteur = 0;
+
+
+    async function afficherDiagramme() {
+
+        const code = textarea.value.trim();
+
+        if (!code) {
+            diagram.innerHTML = "";
+            return;
+        }
+
+        compteur++;
+
+        const id = "mermaid-" + compteur;
+
+        try {
+
+            const resultat = await mermaid.render(id, code);
+
+            diagram.innerHTML = resultat.svg;
+
+        } catch (erreur) {
+
+            diagram.innerHTML = `
+                <div class="error">
+                    <strong>Erreur Mermaid</strong>
+
+                    ${erreur.message}
+                </div>
+            `;
+        }
+    }
+
+
+    /*
+     * Mise à jour automatique
+     * dès que tu modifies le code.
+     */
+
+    textarea.addEventListener(
+        "input",
+        afficherDiagramme
+    );
+
+
+    /*
+     * Affichage initial
+     */
+
+    afficherDiagramme();
+
+</script>
+
+</body>
+</html>

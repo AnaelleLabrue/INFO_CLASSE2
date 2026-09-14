@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Performances Prestataires - Ligne & Volume</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .header p {
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 110px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: monospace;
+            resize: vertical;
+            font-size: 13px;
+        }
+
+        .instructions {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .instructions code {
+            background: #e2e8f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #0f172a;
+        }
+
+        button.btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        button.btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Grille des Cartes */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .prestataire-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            padding: 18px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .prestataire-card h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.15rem;
+        }
+
+        .location {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .score-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            font-size: 12px;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .card-info {
+            font-size: 13px;
+            color: #334155;
+            margin: 4px 0;
+        }
+
+        .btn-delete {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: transparent;
+            color: var(--danger);
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Section Graphiques */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 340px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Ligne & Volume - Gestion & Performance Prestataires</h1>
+        <p>Analyse multicritères des prestataires</p>
+    </div>
+
+    <div class="container">
+        
+        <!-- 1. Bloc de Copier/Coller -->
+        <div class="card">
+            <h2>⚡ Import Bloc Prestataires</h2>
+            <p class="instructions">
+                Colle tes lignes (séparées par un point-virgule <code>;</code> ou tabulation Excel) :<br>
+                <code>Entreprise ; Ville ; Dép ; CP ; Contact ; Admin ; Qualité ; Rapidité ; Dispo ; Sécurité ; Relationnel</code>
+            </p>
+            <textarea id="importBlock" placeholder="Exemple :
+Transport Express ; Paris ; 75 ; 75001 ; Jean Dupont ; OK ; 9 ; 8 ; 9 ; 10 ; 8.5
+Logistique Sud ; Lyon ; 69 ; 69002 ; Marie Curie ; En attente ; 7 ; 9 ; 6 ; 8 ; 7"></textarea>
+            <button class="btn-primary" onclick="traiterEtAjouterBloc()">Trier & Ajouter</button>
+        </div>
+
+        <!-- 2. Section Graphiques de Performance -->
+        <div class="card">
+            <h2>📊 Analyse Comparative des Performances</h2>
+            <div class="charts-grid">
+                <div>
+                    <h3>Classement par Note Moyenne (/10)</h3>
+                    <div class="chart-container">
+                        <canvas id="chartPerformance"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3>Détail des Critères par Prestataire</h3>
+                    <div class="chart-container">
+                        <canvas id="chartRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Cartes Visuelles -->
+        <div class="card">
+            <h2>📇 Cartes Prestataires</h2>
+            <div id="cardsGrid" class="cards-grid">
+                <!-- Cartes générées dynamiquement -->
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Données initiales
+        let prestataires = [
+            { entreprise: "Transport Express", ville: "Paris", dep: "75", cp: "75001", contact: "Jean Dupont", admin: "OK", qualite: 9, rapidite: 8, dispo: 9, securite: 10, relationnel: 8.5, moyenne: 8.9 },
+            { entreprise: "Logistique Sud", ville: "Lyon", dep: "69", cp: "69002", contact: "Marie Curie", admin: "En attente", qualite: 7, rapidite: 9, dispo: 6, securite: 8, relationnel: 7, moyenne: 7.4 }
+        ];
+
+        let chartPerformanceInstance = null;
+        let chartRadarInstance = null;
+
+        function parseNote(val) {
+            if (!val) return 0;
+            let n = parseFloat(val.toString().replace(',', '.').replace(/[^0-9.]/g, ''));
+            return isNaN(n) ? 0 : Math.min(Math.max(n, 0), 10);
+        }
+
+        function traiterEtAjouterBloc() {
+            const texte = document.getElementById('importBlock').value.trim();
+            if (!texte) return alert("Veuillez coller du texte d'abord.");
+
+            const lignes = texte.split('\n');
+
+            lignes.forEach(ligne => {
+                if (!ligne.trim()) return;
+
+                let sep = ligne.includes(';') ? ';' : (ligne.includes('\t') ? '\t' : ',');
+                let el = ligne.split(sep).map(x => x.trim());
+
+                if (el[0]) {
+                    let q = parseNote(el[6]);
+                    let r = parseNote(el[7]);
+                    let d = parseNote(el[8]);
+                    let s = parseNote(el[9]);
+                    let rel = parseNote(el[10]);
+
+                    let moy = ((q + r + d + s + rel) / 5).toFixed(1);
+
+                    prestataires.push({
+                        entreprise: el[0] || 'Inconnu',
+                        ville: el[1] || '-',
+                        dep: el[2] || '-',
+                        cp: el[3] || '-',
+                        contact: el[4] || '-',
+                        admin: el[5] || '-',
+                        qualite: q,
+                        rapidite: r,
+                        dispo: d,
+                        securite: s,
+                        relationnel: rel,
+                        moyenne: parseFloat(moy)
+                    });
+                }
+            });
+
+            document.getElementById('importBlock').value = '';
+            actualiserAffichage();
+        }
+
+        function supprimerPrestataire(index) {
+            prestataires.splice(index, 1);
+            actualiserAffichage();
+        }
+
+        function actualiserAffichage() {
+            renderCards();
+            renderCharts();
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            grid.innerHTML = '';
+
+            prestataires.forEach((p, index) => {
+                grid.innerHTML += `
+                    <div class="prestataire-card">
+                        <button class="btn-delete" onclick="supprimerPrestataire(${index})">✕</button>
+                        <h3>${p.entreprise}</h3>
+                        <div class="location">📍 ${p.ville} (${p.dep}) - ${p.cp}</div>
+                        <div class="score-badge">⭐ Moyenne : ${p.moyenne} / 10</div>
+                        <div class="card-info">👤 <strong>Contact :</strong> ${p.contact}</div>
+                        <div class="card-info">📄 <strong>Admin :</strong> ${p.admin}</div>
+                        
+                        <div class="details-grid" style="margin-top: 10px;">
+                            <div>Qualité : <strong>${p.qualite}/10</strong></div>
+                            <div>Rapidité : <strong>${p.rapidite}/10</strong></div>
+                            <div>Dispo : <strong>${p.dispo}/10</strong></div>
+                            <div>Sécurité : <strong>${p.securite}/10</strong></div>
+                            <div style="grid-column: span 2;">Relationnel : <strong>${p.relationnel}/10</strong></div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderCharts() {
+            const prestatairesTries = [...prestataires].sort((a, b) => b.moyenne - a.moyenne);
+
+            const labels = prestatairesTries.map(p => p.entreprise);
+            const moyennes = prestatairesTries.map(p => p.moyenne);
+
+            // 1. Classement par Moyenne globale
+            if (chartPerformanceInstance) chartPerformanceInstance.destroy();
+            const ctx1 = document.getElementById('chartPerformance').getContext('2d');
+            chartPerformanceInstance = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Moyenne globale (/10)',
+                        data: moyennes,
+                        backgroundColor: '#f59e0b'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { x: { beginAtZero: true, max: 10 } }
+                }
+            });
+
+            // 2. Comparaisons radar des 5 critères
+            if (chartRadarInstance) chartRadarInstance.destroy();
+            const ctx2 = document.getElementById('chartRadar').getContext('2d');
+            
+            const datasets = prestataires.slice(0, 5).map((p, i) => {
+                const colors = ['#4f46e5', '#10b981', '#ec4899', '#8b5cf6', '#f59e0b'];
+                return {
+                    label: p.entreprise,
+                    data: [p.qualite, p.rapidite, p.dispo, p.securite, p.relationnel],
+                    borderColor: colors[i % colors.length],
+                    backgroundColor: colors[i % colors.length] + '22'
+                };
+            });
+
+            chartRadarInstance = new Chart(ctx2, {
+                type: 'radar',
+                data: {
+                    labels: ['Qualité', 'Rapidité', 'Disponibilité', 'Sécurité', 'Relationnel'],
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { r: { min: 0, max: 10 } }
+                }
+            });
+        }
+
+        window.onload = actualiserAffichage;
+    </script>
+</body>
+</html>

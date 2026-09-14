@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Séparateur de noms et prénoms</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-slate-100 p-6">
+
+  <div class="mx-auto max-w-4xl">
+
+    <div class="rounded-2xl bg-white p-6 shadow-lg">
+      <h1 class="text-2xl font-bold text-slate-800">
+        Séparateur NOM / Prénom
+      </h1>
+
+      <p class="mt-2 text-slate-600">
+        Collez un nom complet par ligne.
+      </p>
+
+      <textarea
+        id="inputNames"
+        class="mt-4 h-64 w-full rounded-lg border border-slate-300 p-4 font-mono focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        placeholder="CATIC Sakib
+COLLOMB LEFEVRE Edith
+DUPONT Jean Pierre"
+      ></textarea>
+
+      <div class="mt-4 flex flex-wrap gap-3">
+        <button
+          onclick="separerNoms()"
+          class="rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700"
+        >
+          Séparer les noms
+        </button>
+
+        <button
+          onclick="effacer()"
+          class="rounded-lg bg-slate-200 px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-300"
+        >
+          Effacer
+        </button>
+      </div>
+    </div>
+
+    <div id="resultContainer" class="mt-6 hidden">
+      <div class="overflow-hidden rounded-2xl bg-white shadow-lg">
+
+        <div class="border-b p-5">
+          <h2 class="text-xl font-bold text-slate-800">
+            Résultats
+          </h2>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead class="bg-slate-800 text-white">
+              <tr>
+                <th class="px-5 py-3">#</th>
+                <th class="px-5 py-3">NOM</th>
+                <th class="px-5 py-3">Prénom(s)</th>
+              </tr>
+            </thead>
+
+            <tbody id="resultTable" class="divide-y divide-slate-200">
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function separerNoms() {
+      const input = document.getElementById("inputNames").value;
+
+      const lignes = input
+        .split("\n")
+        .map(ligne => ligne.trim())
+        .filter(ligne => ligne !== "");
+
+      const table = document.getElementById("resultTable");
+      const container = document.getElementById("resultContainer");
+
+      table.innerHTML = "";
+
+      lignes.forEach((ligne, index) => {
+
+        const mots = ligne.split(/\s+/);
+
+        const nom = [];
+        const prenom = [];
+
+        let prenomTrouve = false;
+
+        mots.forEach(mot => {
+
+          /*
+           * Si le mot est entièrement en majuscules,
+           * il est considéré comme faisant partie du NOM.
+           *
+           * Dès qu'un mot contient des minuscules,
+           * il est considéré comme un prénom.
+           */
+          if (!prenomTrouve && mot === mot.toUpperCase()) {
+            nom.push(mot);
+          } else {
+            prenomTrouve = true;
+            prenom.push(mot);
+          }
+
+        });
+
+        /*
+         * Cas particulier :
+         * Si aucun prénom n'a été détecté,
+         * on considère le dernier mot comme prénom.
+         */
+        if (prenom.length === 0 && nom.length > 1) {
+          prenom.push(nom.pop());
+        }
+
+        const row = document.createElement("tr");
+
+        row.className = "hover:bg-slate-50";
+
+        row.innerHTML = `
+          <td class="px-5 py-3 text-slate-500">${index + 1}</td>
+          <td class="px-5 py-3 font-semibold text-slate-800">
+            ${nom.join(" ")}
+          </td>
+          <td class="px-5 py-3 text-slate-700">
+            ${prenom.join(" ")}
+          </td>
+        `;
+
+        table.appendChild(row);
+      });
+
+      container.classList.remove("hidden");
+    }
+
+
+    function effacer() {
+      document.getElementById("inputNames").value = "";
+      document.getElementById("resultTable").innerHTML = "";
+      document
+        .getElementById("resultContainer")
+        .classList.add("hidden");
+    }
+  </script>
+
+</body>
+</html>

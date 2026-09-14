@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Éditeur Mermaid local</title>
+
+    <!--
+        Mermaid est exécuté dans le navigateur.
+        Le contenu du textarea n'est pas envoyé à Mermaid Live.
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            padding: 18px 25px;
+            background: #1f2937;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        header p {
+            margin: 6px 0 0;
+            opacity: 0.8;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: calc(100vh - 85px);
+            gap: 1px;
+        }
+
+        .panel {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .panel-title {
+            padding: 12px 16px;
+            background: #e5e7eb;
+            font-weight: bold;
+            border-bottom: 1px solid #d1d5db;
+        }
+
+        textarea {
+            flex: 1;
+            width: 100%;
+            resize: none;
+            border: none;
+            outline: none;
+            padding: 20px;
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 15px;
+            line-height: 1.5;
+            background: #111827;
+            color: #e5e7eb;
+        }
+
+        #preview {
+            flex: 1;
+            overflow: auto;
+            padding: 30px;
+            background: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #diagram {
+            width: 100%;
+        }
+
+        .error {
+            color: #b91c1c;
+            background: #fee2e2;
+            border: 1px solid #fecaca;
+            padding: 15px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 50% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Éditeur Mermaid local</h1>
+    <p>Écris ton code Mermaid à gauche, visualise le diagramme à droite.</p>
+</header>
+
+<div class="container">
+
+    <!-- GAUCHE : CODE MERMAID -->
+    <section class="panel">
+        <div class="panel-title">
+            Code Mermaid
+        </div>
+
+        <textarea id="code">stateDiagram-v2
+
+    [*] --> Proposition
+
+    Proposition --> ValidationSujet
+
+    ValidationSujet --> Recherche : Validé
+    ValidationSujet --> Proposition : Refusé
+
+    Recherche --> ValidationPlan
+
+    ValidationPlan --> Redaction : Validé
+    ValidationPlan --> Recherche : Refusé
+
+    Redaction --> Soutenance
+
+    Soutenance --> Diplome
+
+    Diplome --> [*]
+</textarea>
+    </section>
+
+
+    <!-- DROITE : PREVISUALISATION -->
+    <section class="panel">
+        <div class="panel-title">
+            Prévisualisation
+        </div>
+
+        <div id="preview">
+            <div id="diagram"></div>
+        </div>
+    </section>
+
+</div>
+
+
+<script>
+
+    // Configuration Mermaid
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "default"
+    });
+
+
+    const textarea = document.getElementById("code");
+    const diagram = document.getElementById("diagram");
+
+    let compteur = 0;
+
+
+    // Génération du diagramme
+    async function afficherDiagramme() {
+
+        const code = textarea.value.trim();
+
+        if (!code) {
+            diagram.innerHTML = "<p>Aucun code Mermaid.</p>";
+            return;
+        }
+
+        compteur++;
+
+        const id = "mermaid-diagram-" + compteur;
+
+        try {
+
+            const resultat = await mermaid.render(id, code);
+
+            diagram.innerHTML = resultat.svg;
+
+        } catch (erreur) {
+
+            diagram.innerHTML = `
+                <div class="error">
+                    Erreur dans le code Mermaid :
+
+                    ${erreur.message}
+                </div>
+            `;
+        }
+    }
+
+
+    // Mise à jour automatique pendant la saisie
+    textarea.addEventListener("input", afficherDiagramme);
+
+
+    // Première génération
+    afficherDiagramme();
+
+</script>
+
+</body>
+</html>

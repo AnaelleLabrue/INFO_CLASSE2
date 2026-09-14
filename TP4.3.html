@@ -1,0 +1,658 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    body {background-color: #f5f5f2}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;!DOCTYPE html&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;html lang="fr"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;head&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;meta charset="UTF-8"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;title&gt;Carte visuelle locale&lt;/title&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;style&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">* {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>box-sizing: border-box;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">:root {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--bg: #f7f8fc;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--panel: #ffffff;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--text: #1e293b;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--muted: #64748b;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--red: #ff6b6b;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--blue: #74b9ff;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--green: #55efc4;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--yellow: #ffeaa7;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>--line: #94a3b8;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">body {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>margin: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>height: 100vh;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-family: Inter, Arial, Helvetica, sans-serif;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: var(--bg);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>color: var(--text);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>display: flex;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>flex-direction: column;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>HEADER</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">header {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>height: 68px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>display: flex;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>align-items: center;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 0 24px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: white;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid #e2e8f0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">header h1 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>margin: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 21px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">header span {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>margin-left: 12px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 5px 10px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-radius: 20px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: #ecfdf5;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>color: #047857;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 12px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-weight: bold;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>APPLICATION</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.app {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>flex: 1;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>display: grid;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>grid-template-columns: 360px 1fr;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>min-height: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>EDITOR</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.editor {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>display: flex;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>flex-direction: column;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: white;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-right: 1px solid #e2e8f0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>z-index: 10;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.editor-title {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 14px 18px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-weight: 700;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid #e2e8f0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">textarea {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>flex: 1;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 100%;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>resize: none;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>outline: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 18px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: #0f172a;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>color: #e2e8f0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-family:</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>Consolas,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>"Courier New",</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>monospace;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 14px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>line-height: 1.6;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>CANVAS</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.workspace {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: relative;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>overflow: auto;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background-color: #f8fafc;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background-image:</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>radial-gradient(</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>#cbd5e1 1px,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>transparent 1px</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background-size: 24px 24px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.canvas {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: relative;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 1250px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>height: 900px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>margin: 40px auto;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>SVG CONNECTIONS</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.connections {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: absolute;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>inset: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 100%;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>height: 100%;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>pointer-events: none;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>z-index: 1;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.connection {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>fill: none;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>stroke: var(--line);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>stroke-width: 3;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>stroke-linecap: round;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>stroke-linejoin: round;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>CENTRAL NODE</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.root {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: absolute;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 50%;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 60px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>transform: translateX(-50%);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 310px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 22px 25px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-radius: 22px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: var(--red);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>color: white;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>text-align: center;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 20px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-weight: 800;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>line-height: 1.3;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>box-shadow:</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>0 12px 30px rgba(255, 107, 107, .25);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>z-index: 5;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>CATEGORIES</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.category {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: absolute;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 220px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 15px 18px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-radius: 16px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>text-align: center;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 16px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-weight: 800;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>box-shadow:</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>0 8px 22px rgba(15, 23, 42, .08);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>z-index: 5;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.method {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 70px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 300px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: var(--blue);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.tools {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 515px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 300px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: var(--green);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.attitude {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>right: 70px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 300px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: var(--yellow);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>CAUSES</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.causes {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: absolute;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 230px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>padding: 16px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: white;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border: 1px solid #e2e8f0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-radius: 14px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>box-shadow:</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>0 7px 20px rgba(15, 23, 42, .07);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>z-index: 5;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 14px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>line-height: 1.5;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.causes strong {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>display: block;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>margin-bottom: 5px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>font-size: 13px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>color: var(--muted);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.method-1 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 45px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 440px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.method-2 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 85px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 610px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.tools-1 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 500px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 440px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.tools-2 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>left: 500px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 610px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.attitude-1 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>right: 45px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 440px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.attitude-2 {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>right: 85px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>top: 610px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>PETITS POINTS DE CONNEXION</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">.dot {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>position: absolute;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>width: 10px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>height: 10px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border-radius: 50%;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>background: white;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>border: 3px solid var(--line);</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>z-index: 6;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/* =====================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">   </span>RESPONSIVE</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">===================================================== */</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">@media (max-width: 900px) {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>.app {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>grid-template-rows: 42% 58%;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>.editor {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>border-right: 0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>border-bottom: 1px solid #e2e8f0;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>.canvas {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>margin: 20px;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">}</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/style&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/head&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;body&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;header&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;🧠 Carte visuelle locale&lt;/h1&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;span&gt;100 % navigateur&lt;/span&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/header&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;div class="app"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- =================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">         </span>ÉDITEUR</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>================================================== --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="editor"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="editor-title"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>Votre contenu</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;textarea id="input"&gt;Échec dans la recherche d'un stage étudiant</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">Méthode</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- CV non adapté</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- Relances oubliées</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- Pas de réseau</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">Outils</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- Candidatures envoyées en retard</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- Profils LinkedIn inactifs</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">Attitude</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- Préparation insuffisante aux entretiens</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">- Manque de ciblage&lt;/textarea&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- =================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">         </span>VISUALISATION</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>================================================== --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="workspace"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="canvas"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- =================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                 </span>CONNEXIONS SVG</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>================================================== --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;svg</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>class="connections"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>viewBox="0 0 1250 900"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>preserveAspectRatio="none"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Centre → Méthode --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 625 145</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>C 625 210,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>410 220,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>180 300</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Centre → Outils --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 625 145</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>L 625 300</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Centre → Attitude --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 625 145</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>C 625 210,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>840 220,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>1070 300</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Méthode → Cause 1 --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 180 350</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>C 180 395,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>160 400,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>160 440</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Méthode → Cause 2 --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 180 350</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>C 180 470,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>200 530,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>200 610</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Outils → Cause 1 --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 625 350</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>L 625 440</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Outils → Cause 2 --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 625 350</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>L 625 610</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Attitude → Cause 1 --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 1070 350</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>C 1070 395,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>1090 400,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>1090 440</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- Attitude → Cause 2 --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>class="connection"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>d="</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>M 1070 350</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                        </span>C 1070 470,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>1050 530,</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                          </span>1050 610</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                    </span>"</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/svg&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- =================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                 </span>CENTRE</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>================================================== --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="root"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Échec dans la recherche&lt;br&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>d'un stage étudiant</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- =================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                 </span>CATÉGORIES</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>================================================== --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category method"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>📋 Méthode</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category tools"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>🛠️ Outils</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="category attitude"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>🎯 Attitude</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- =================================================</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                 </span>CAUSES</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>================================================== --&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="causes method-1"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;MÉTHODE&lt;/strong&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>CV non adapté</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="causes method-2"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;MÉTHODE&lt;/strong&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Relances oubliées&lt;br&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Pas de réseau</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="causes tools-1"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;OUTILS&lt;/strong&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Candidatures envoyées&lt;br&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>en retard</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="causes tools-2"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;OUTILS&lt;/strong&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Profils LinkedIn&lt;br&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>inactifs</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="causes attitude-1"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;ATTITUDE&lt;/strong&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Préparation insuffisante&lt;br&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>aux entretiens</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="causes attitude-2"&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;ATTITUDE&lt;/strong&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">                </span>Manque de ciblage</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/div&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;script&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">/*</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>Cette version fonctionne entièrement</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>côté navigateur.</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>Aucune API.</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>Aucun serveur.</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>Aucune donnée envoyée.</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">*/</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">const input = document.getElementById("input");</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">input.addEventListener("input", () =&gt; {</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>/*</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>Ici tu peux ensuite ajouter</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>un moteur qui transforme automatiquement</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>le texte en carte.</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>Pour l'instant, la structure graphique</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">        </span>reste locale.</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1"><span class="Apple-converted-space">    </span>*/</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">});</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/script&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff; min-height: 25.0px"><span class="s1"></span><br></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/body&gt;</span></h1>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff"><span class="s1">&lt;/html&gt;</span></h1>
+</body>
+</html>
